@@ -1,15 +1,22 @@
 document.querySelector('button').addEventListener('click', submit)
+const account = document.querySelector('.account')
 const myBalance = document.querySelector('.myBalance')
 const from = document.querySelector('.for')
+let error = document.createElement('h2')
 
 function submit() {
   const option = document.querySelector('select').value
   const amount = document.querySelector('.amount').value
 
-  if (option === 'income') {
+  if (isNaN(amount) === true) {
+    error.textContent = 'Amount is not a number. Please enter a number.'
+    account.append(error)
+  } else if (option === 'income') {
+    error.textContent = ''
     myAccount.income(Number(amount))
     myAccount.history(`+$${amount}`)
   } else if (option === 'expense') {
+    error.textContent = ''
     myAccount.expesne(Number(amount))
     myAccount.history(`-$${amount}`)
   }
@@ -34,7 +41,9 @@ class Account {
     const history = document.querySelector('.history')
     const p = document.createElement('p')
 
-    p.textContent = `${from.value.toUpperCase()}: ${earnOrSpent}`
+    const date = Date().split(' ').slice(0,4)
+
+    p.textContent = `${date[0]}, ${date[1]} ${date[2]}, ${date[3]} ${from.value.toUpperCase()}: ${earnOrSpent}`
     history.append(p)
   }
 }
