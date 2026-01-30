@@ -5,6 +5,12 @@ const from = document.querySelector('.for')
 const history = document.querySelector('.history')
 let error = document.createElement('h2')
 
+let arrayHistory = JSON.parse(localStorage.getItem('history'))
+if (arrayHistory === null) {
+  arrayHistory = []
+}
+localStorage.setItem('history', JSON.stringify(arrayHistory))
+
 function submit() {
   const option = document.querySelector('select').value
   const amount = document.querySelector('.amount').value
@@ -45,33 +51,26 @@ class Account {
   }
 
   updateHisAndCur(transaction, current) {
-    let storeHistory = JSON.parse(localStorage.getItem('history'))
-    if (storeHistory === null) {
-      storeHistory = []
-    }
-    storeHistory.push(transaction)
-    localStorage.setItem('history', JSON.stringify(storeHistory))
-
     localStorage.setItem('current', current)
 
-    const p = document.createElement('p')
+    arrayHistory.push(transaction)
+    localStorage.setItem('history', JSON.stringify(arrayHistory))
 
-    const date = Date().split(' ').slice(0,4)
+    if (arrayHistory.length > 30) {
+      arrayHistory.shift()
+      localStorage.setItem('history', JSON.stringify(arrayHistory))
+    }
 
-    p.textContent = transaction
-    history.append(p)
+    for (let i = 0; i < arrayHistory.length; i++) {
+      document.querySelector(`.p${i + 1}`).textContent = arrayHistory[i]
+    }
   }
+}
+
+for (let i = 0; i < arrayHistory.length; i++) {
+  document.querySelector(`.p${i + 1}`).textContent = arrayHistory[i]
 }
 
 myBalance.textContent = `$${Number(localStorage.getItem('current'))}`
 
 const myAccount = new Account(Number(localStorage.getItem('current')))
-
-let arrayHistory = JSON.parse(localStorage.getItem('history'))
-
-for (let i = 0; i < arrayHistory.length; i++) {
-  const p = document.createElement('p')
-
-  p.textContent = arrayHistory[i]
-  history.append(p)
-}
