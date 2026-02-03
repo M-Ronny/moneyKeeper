@@ -25,12 +25,18 @@
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+.account h1 {
+  text-align: center;
+  padding-right: 25%;
+}
+
 .description, .amount,
 select, button {
   display: block;
   width: 75%;
   height: 40px;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 select {
@@ -40,4 +46,10 @@ select {
 div {
   overflow-y: auto;
   height: 300px;
+}
+
+p {
+  font-size: 25px;
+  margin: 30px 0;
+  font-weight: bold;
 }
