@@ -10,18 +10,32 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-.account, .history {
-  float: left;
-  width: 50%;
+nav {
+  height: 100px;
 }
 
-.account {
-  padding: 5% 10% 10% 10%;
+.account, .history {
+  float: left;
+  width: 48%;
+  height: 500px;
+  margin: 0 1%;
+  border: solid 10px;
+  border-radius: 25px;
+  background: rgb(217, 215, 215);
+}
+
+.balance {
+  margin: 13% 0 0 19%;
+}
+
+/* .account {
+  padding: 5% 2% 10% 10%;
+  border: solid 1px;
 }
 
 .history {
-  padding-top: 5%;
-}
+  border: solid 1px;
+} */
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
@@ -39,17 +53,46 @@ select, button {
   margin-bottom: 5px;
 }
 
+p, input, select, button {
+  font-size: 25px;
+}
+
+p, select, button {
+  font-weight: bold;
+}
+
+p, .myBalance {
+  color: rgb(52, 158, 207);
+}
+
+select, button {
+  background: rgb(52, 158, 207);
+}
+
+.account h1 {
+  text-align: center;
+  padding-right: 25%;
+}
+
+.history h1 {
+  text-align: center;
+  border-bottom: solid 2px;
+  padding-bottom: 2%;
+}
+
 select {
   text-align: center;
 }
 
-div {
+.transaction {
   overflow-y: auto;
-  height: 300px;
+  height: 385px;
 }
 
 p {
-  font-size: 25px;
   margin: 30px 0;
-  font-weight: bold;
+  border-bottom: solid 2px black;
+  padding-bottom: 20px;
+  padding-left: 2%;
 }
+
