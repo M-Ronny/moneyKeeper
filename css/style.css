@@ -10,6 +10,10 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+body {
+  font-family: 'Roboto', 'sans-serif';
+}
+
 nav {
   height: 50px;
   text-align: center;
@@ -57,6 +61,7 @@ p, select, button {
 
 select, button {
   background: rgb(52, 158, 207);
+  cursor: pointer;
 }
 
 .account h1 {
@@ -85,6 +90,10 @@ p {
   padding-bottom: 20px;
   padding-left: 2%;
   color: rgb(52, 158, 207)
+}
+
+h2 {
+  text-align: center;
 }
 
 /******************************************
